@@ -1,0 +1,23 @@
+{
+  "name": "prokopEcho",
+  "version": "1.0.0",
+  "description": "prokop24 server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": "14.15.0"
+  },
+  "devDependencies": {
+    "@htmlacademy/editorconfig-cli": "1.0.0",
+    "eslint": "7.26.0",
+    "eslint-config-htmlacademy": "3.0.0"
+  },
+  "dependencies": {
+    "node-telegram-bot-api": "0.53.0"
+  }
+}
