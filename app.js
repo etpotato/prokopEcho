@@ -15,7 +15,7 @@ bot.on('message', (msg) => {
   bot.sendMessage(chatId, 'Работаю, новых заказов нет.', {parse_mode: 'HTML'});
 });
 
-app.use(express.static(path.join(__dirname, 'public'), {maxAge: '2d'}));
+app.use(express.static(path.join(__dirname, 'public'), {maxAge: '2h'}));
 
 app.post('/', upload.none(), (req, res) => {
   bot.sendMessage(TG_CHAT_ID,
