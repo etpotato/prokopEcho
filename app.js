@@ -11,9 +11,7 @@ const TG_CHAT_ID = -514747166;
 
 bot.on('message', (msg) => {
   const chatId = msg.chat.id;
-  bot.sendMessage(chatId,
-    '<b>Я работаю. Новых заказов нет.',
-    {parse_mode: 'HTML'});
+  bot.sendMessage(chatId, 'Работаю, новых заказов нет.', {parse_mode: 'HTML'});
 });
 
 app.use(express.static(path.join(__dirname, 'public')));
