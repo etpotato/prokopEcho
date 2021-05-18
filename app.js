@@ -1,20 +1,21 @@
 const TelegramBot = require('node-telegram-bot-api');
 const path = require('path');
 const express = require('express');
-const app = express();
 const multer  = require('multer');
-const upload = multer();
 
 const TOKEN = '1855434521:AAH8yD4eNlFvDx0qprTYFs3tZ0EuamRqeqM';
-const bot = new TelegramBot(TOKEN, {polling: true});
 const TG_CHAT_ID = -514747166;
+
+const bot = new TelegramBot(TOKEN, {polling: true});
+const app = express();
+const upload = multer();
 
 bot.on('message', (msg) => {
   const chatId = msg.chat.id;
   bot.sendMessage(chatId, 'Работаю, новых заказов нет.', {parse_mode: 'HTML'});
 });
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public'), {maxAge: '2d'}));
 
 app.post('/', upload.none(), (req, res) => {
   bot.sendMessage(TG_CHAT_ID,
