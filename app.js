@@ -1,12 +1,15 @@
+const BOTINFO = require('./token.js');
 const TelegramBot = require('node-telegram-bot-api');
 const path = require('path');
 const express = require('express');
 const multer  = require('multer');
 
-const TOKEN = '1855434521:AAH8yD4eNlFvDx0qprTYFs3tZ0EuamRqeqM';
-const TG_CHAT_ID = -514747166;
+const TOKEN = BOTINFO.token;
+const TG_CHAT_ID = BOTINFO.id;
 
-const bot = new TelegramBot(TOKEN, {polling: true});
+console.log(BOTINFO);
+
+const bot = new TelegramBot(BOTINFO.token, {polling: true});
 const app = express();
 const upload = multer();
 
@@ -18,7 +21,7 @@ bot.on('message', (msg) => {
 app.use(express.static(path.join(__dirname, 'public'), {maxAge: '2h'}));
 
 app.post('/', upload.none(), (req, res) => {
-  bot.sendMessage(TG_CHAT_ID,
+  bot.sendMessage(BOTINFO.id,
     '<b>Новый заказ: </b>'+req.body.tel,
     {parse_mode : 'HTML'})
    .then(()=> res.status(200).send('Номер телефона отправлен. Ожидайте звонка.'))
