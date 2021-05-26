@@ -4,11 +4,6 @@ const path = require('path');
 const express = require('express');
 const multer  = require('multer');
 
-const TOKEN = BOTINFO.token;
-const TG_CHAT_ID = BOTINFO.id;
-
-console.log(BOTINFO);
-
 const bot = new TelegramBot(BOTINFO.token, {polling: true});
 const app = express();
 const upload = multer();
